@@ -1,0 +1,15 @@
+.icon-select {
+  .select-box {
+    @apply grid grid-cols-9 h-300px overflow-auto;
+
+    &-item {
+      @apply flex m-2px p-6px;
+      border: 1px solid #e5e7eb;
+
+      &:hover,
+      &.active {
+        @apply border-blue-600;
+      }
+    }
+  }
+}
