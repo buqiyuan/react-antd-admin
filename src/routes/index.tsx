@@ -62,8 +62,11 @@ const DynamicRouter: FC = () => {
       return navigate({ pathname: 'login' }, { replace: true, state: { from: pathname } });
     }
 
-    if (token && !menuList.length) {
-      userStore.afterLogin();
+    if (token) {
+      !menuList.length && userStore.afterLogin();
+      if (pathname === '/login') {
+        navigate({ pathname: '/' }, { replace: true });
+      }
     }
   }, [menuList, token, navigate, pathname, state]);
 

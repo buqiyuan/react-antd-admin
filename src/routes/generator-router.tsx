@@ -1,3 +1,5 @@
+import { Result } from 'antd';
+
 import { NotFound } from '@/routes';
 import WrapperRouteComponent from '@/routes/config';
 import { constantRouterComponents } from '@/routes/modules';
@@ -52,6 +54,14 @@ export function filterAsyncRoute(routes: API.Menu[], parentRoute: API.Menu | nul
           if (children?.length) {
             route.element = <WrapperRouteComponent element={<RouteView />} auth={true} titleId="title.dashboard" />;
             route.children = children;
+          } else {
+            route.element = (
+              <Result
+                status="500"
+                title={name}
+                subTitle="目录类型菜单不是真实页面，请为当前目录添加页面级子菜单或更改当前菜单类型."
+              />
+            );
           }
           return route;
         } else if (item.type === 1) {

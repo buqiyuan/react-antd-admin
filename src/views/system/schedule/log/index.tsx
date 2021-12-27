@@ -80,7 +80,7 @@ export const SystemScheduleTaskLog = () => {
     },
     {
       title: '执行时间',
-      dataIndex: 'createTime',
+      dataIndex: 'createdAt',
       align: 'center',
       width: 220
     }

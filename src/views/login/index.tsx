@@ -8,7 +8,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { getImageCaptcha } from '@/api/login';
 import { userStore } from '@/stores/user';
-import { formatSearch } from '@/utils/formatSearch';
 
 const initialValues: API.LoginParams = {
   username: 'rootadmin',
@@ -48,8 +47,10 @@ const LoginForm: FC = () => {
     if (Object.is(res, false)) {
       return getCapatcha();
     }
-    const search = formatSearch(location.search);
-    const from = location.state?.from || search.from || { pathname: '/dashboard' };
+    const search = new URLSearchParams(location.search);
+    console.log('location.search', location.search);
+
+    const from = location.state?.from || search.get('from') || { pathname: '/dashboard' };
     navigate(from, { replace: true });
   };
 

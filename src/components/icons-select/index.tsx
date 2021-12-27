@@ -1,7 +1,7 @@
 import './index.less';
 
 import { Input, Popover } from 'antd';
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import { IconFont } from '@/components/iconfont';
 
@@ -24,6 +24,10 @@ export const IconSelect: FC<IconSelectProps> = props => {
     setModelValue(iconItem.font_class);
     onChange?.(iconItem.font_class);
   };
+
+  useEffect(() => {
+    setModelValue(value);
+  }, [value]);
 
   return (
     <Popover

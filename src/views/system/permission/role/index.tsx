@@ -104,18 +104,13 @@ export const SystemPermissionRole = () => {
       <ProTable<TableListItem>
         actionRef={actionRef}
         columns={columns}
-        request={async params => {
-          // 表单搜索项会从 params 传入，传递给后端接口。
-          const list = await getRoleList({ limit: params.pageSize, page: params.current });
-          return {
-            data: list,
-            success: true
-          };
-        }}
         rowKey="id"
         scroll={{ x: 1300 }}
         pagination={{
           showQuickJumper: true
+        }}
+        toolbar={{
+          title: '角色管理'
         }}
         search={false}
         dateFormatter="string"
@@ -130,6 +125,14 @@ export const SystemPermissionRole = () => {
             新增
           </Button>
         }
+        request={async params => {
+          // 表单搜索项会从 params 传入，传递给后端接口。
+          const list = await getRoleList({ limit: params.pageSize, page: params.current });
+          return {
+            data: list,
+            success: true
+          };
+        }}
       />
       <OperateFormModal
         detail={currentRow}

@@ -1,4 +1,5 @@
 import 'virtual:windi.css';
+import 'virtual:windi-devtools';
 import 'antd/dist/antd.less';
 import 'antd/lib/style/index.css';
 import './styles/index.less';

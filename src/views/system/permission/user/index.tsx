@@ -97,11 +97,15 @@ const User: React.FC<{}> = () => {
         params={params}
         columns={columns}
         size="small"
+        toolbar={{
+          title: '用户管理',
+          tooltip: '请不要随意删除用户，避免到影响其他用户的使用。'
+        }}
         request={async params => {
           const { list, pagination } = await getUserListPage({
             page: params.current,
             limit: params.pageSize,
-            departmentIds: params.departmentIds
+            departmentIds: params.departmentIds as number[]
           });
           console.log('list', list);
           return {
@@ -110,7 +114,7 @@ const User: React.FC<{}> = () => {
             // 不然 table 会停止解析数据，即使有数据
             success: true,
             // 不传会使用 data 的长度，如果是分页一定要传
-            total: pagination.total
+            total: pagination?.total
           };
         }}
         rowSelection={{

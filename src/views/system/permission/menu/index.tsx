@@ -152,15 +152,6 @@ const Menu = () => {
         actionRef={actionRef}
         columns={columns}
         size="small"
-        request={async _ => {
-          // 表单搜索项会从 params 传入，传递给后端接口。
-          const list = await getMenuList();
-          const tableData = filterMenuListToTable(list);
-          return {
-            data: tableData,
-            success: true
-          };
-        }}
         sticky={true}
         rowKey="id"
         scroll={{ x: 1500, y: 600 }}
@@ -169,6 +160,9 @@ const Menu = () => {
         }}
         search={false}
         dateFormatter="string"
+        toolbar={{
+          title: '菜单管理'
+        }}
         headerTitle={
           <Button
             type="primary"
@@ -180,6 +174,15 @@ const Menu = () => {
             新增
           </Button>
         }
+        request={async _ => {
+          // 表单搜索项会从 params 传入，传递给后端接口。
+          const list = await getMenuList();
+          const tableData = filterMenuListToTable(list);
+          return {
+            data: tableData,
+            success: true
+          };
+        }}
       />
       <OperateFormModal
         visible={modalVisible}

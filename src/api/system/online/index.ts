@@ -2,7 +2,7 @@ import OnlineApi from '@/core/permission/modules/sys/online';
 import { request } from '@/utils/request';
 
 export function getOnlineList() {
-  return request<API.TableListResult<API.OnlineUserListResult>>({
+  return request<API.OnlineUserListResult>({
     url: OnlineApi.list,
     method: 'get'
   });
